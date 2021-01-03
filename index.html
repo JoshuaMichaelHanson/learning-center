@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS 633 Unit Testing Main</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Not sure if we are going to keep these styles-->
+    <style>
+        .relative-inside {
+            position: relative;
+        }
+
+        .stick-to-bottom {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .text-height {
+            min-height: 325px;
+        }
+
+        .card-height {
+            min-height: 450px;
+        }
+
+        .lesson-placeholder {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .lesson-placeholder-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">
+                            This site is complimentary content for the Boston University Course CS633 Software Quality,
+                            Testing and Security Management. Designed and Created by <a target="_blank"
+                                href="https://www.linkedin.com/in/joshua-hanson-06505564/">Josh Hanson</a> [1]. for
+                            <a target="_blank" href="https://www.linkedin.com/in/alexelentukh/">Alex Elentukh</a> .
+                            Hope you enjoy the content! [1] - <a href="appendix.html">Please see the appendix for links
+                                to
+                                all the site code and
+                                acknowledgments to the places I retrieved this info and code examples (that are not my
+                                own
+                                😉) </a>
+                        </p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Site Map</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html" class="text-white">Automated Testing</a></li>
+                            <li><a href="past-projects.html" class="text-white">Past Projects</a></li>
+                            <li><a href="appendix.html" class="text-white">Appendix</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
+                        class="bi bi-graph-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <strong class="ps-1">CS633 Learning Center</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">
+                        Welcome to the CS633 Automated Testing and Code Quality Page
+                    </h1>
+                    <p class="lead text-muted">
+                        Automated testing and code quality tools have become the gold
+                        standard within Agile / Scrum / Extreme Programming (XP) teams. By
+                        using automated tests including unit, integration, user interface;
+                        combined with code quality analysis tools: SonarQube, Veracode;
+                        these teams can develop higher quality (confidence) software and
+                        fix bugs closer to the source than any other time in history. They
+                        also facilitate the trust to refactor code, because if something
+                        breaks the regression tests will find them almost immediately. By
+                        working though these lessons you too will become convinced of the
+                        power and need of these techniques.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="album py-5 bg-light">
+            <div class="container card-group">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <svg class="lesson-placeholder card-img-top" width="100%" height="100"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <title>Lesson # 1</title>
+                                <rect width="100%" height="100%" fill="#4d94ff" />
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                                    Lesson # 1
+                                </text>
+                            </svg>
+
+                            <div class="card-body card-height">
+                                <p class="card-text text-height">
+                                    In lesson one you will use the JavaScript framework
+                                    <a target="_blank" href="https://mochajs.org/">Mocha</a> and the <i>BDD / TDD</i>
+                                    assertion library
+                                    <a target="_blank" href="https://www.chaijs.com/">Chai</a> to execute tests
+                                    (directly in the browser) for the classic game
+                                    <i>rock-paper-scissors</i>. Please click the <b>‘Remix Project on Glitch’</b>
+                                    button to re-mix the project on Glitch. This will generate
+                                    you your own personal project that you can modify and change
+                                    freely. Do not be afraid to mess anything up as you can
+                                    simply come back to this page and start again. Note the
+                                    project will only live for <b>5</b> days if you do not create a
+                                    Glitch account. Because more than one of these lessons
+                                    involve Glitch it is highly recommend to <mark>create a free
+                                        account</mark> to save your work forever.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a target="_blank"
+                                            href="https://glitch.com/edit/#!/remix/mocha-chai-without-coverage"
+                                            class="btn btn-outline-dark" role="button">Remix Project on Glitch</a>
+                                    </div>
+                                    <small class="text-muted">~15 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <svg class="lesson-placeholder card-img-top" width="100%" height="100"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <title>Lesson # 2</title>
+                                <rect width="100%" height="100%" fill="#0066ff" />
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                                    Lesson # 2
+                                </text>
+                            </svg>
+
+                            <div class="card-body card-height">
+                                <p class="card-text text-height">
+                                    In lesson two you will use the same libraries and execute the same tests. Unlike
+                                    lesson 1 you will be using the <b>‘terminal’</b> interface to run a <b>‘npm
+                                        command’</b> that will
+                                    kick off the tests. This is how a continuous integration / delivery pipeline would
+                                    run the tests (<i>automated testing</i>). We are also adding an additional library
+                                    to the
+                                    <b>mix</b> called <a target="_blank"
+                                        href="https://istanbul.js.org/docs/tutorials/mocha/">Istanbul</a> that allows us
+                                    to understand how much code coverage the
+                                    automated tests are providing. Please click the ‘Remix Project on Glitch’ button to
+                                    get
+                                    started!
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a target="_blank"
+                                            href="https://glitch.com/edit/#!/remix/mocha-chai-with-coverage"
+                                            class="btn btn-outline-dark" role="button">Remix Project on Glitch</a>
+                                    </div>
+                                    <small class="text-muted">~30 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <svg class="lesson-placeholder card-img-top" width="100%" height="100"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <title>Lesson # 3</title>
+                                <rect width="100%" height="100%" fill="#003d99" />
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                                    Lesson # 3
+                                </text>
+                            </svg>
+
+                            <div class="card-body card-height">
+                                <p class="card-text text-height">
+                                    In lesson <i>three</i> we will be exploring an application generated by a very
+                                    popular
+                                    <i>open-source</i> application generator called <a
+                                        href="https://www.jhipster.tech/">jHipster</a> in a <b>code analysis</b> tool
+                                    called
+                                    <a href="https://www.sonarqube.org/">SonarQube</a> via <a
+                                        href="https://sonarcloud.io/"></a> sonarcloud. This generator is great for jump
+                                    starting projects with a
+                                    <i>Java</i> backend using <i>Vue</i>, <i>React</i> or <i>Angular</i> on the front
+                                    end. When a new entity
+                                    is generated the backend code <b>(including tests)</b> and front-end code
+                                    <b>(including tests)</b> is
+                                    built for you. Please explore each of the tabs: Overview, Issues, Security Hotspots,
+                                    Measures, Code, and Activity. Please be prepared to answer a few questions based off
+                                    your findings.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a target="_blank"
+                                            href="https://sonarcloud.io/dashboard?id=jhipster-sample-application"
+                                            class="btn btn-outline-dark" role="button">View Project on sonarcloud</a>
+                                    </div>
+                                    <small class="text-muted">~15 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 is enough for now-->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+            <p>
+                &copy;2021 Boston Univeristy
+            </p>
+        </div>
+    </footer>
+    <!-- Remix example link
+    <p>
+        <a href="https://glitch.com/edit/#!/remix/mocha-chai-without-coverage">Please click here to remix example 1.</a>
+    </p -->
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
